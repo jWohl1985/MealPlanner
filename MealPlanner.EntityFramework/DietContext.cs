@@ -24,8 +24,5 @@ public class DietContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfiguration(new SeedFoodData());
-        builder.ApplyConfiguration(new SeedDietUserData());
-        builder.ApplyConfiguration(new SeedWeightLogs());
-        builder.ApplyConfiguration(new SeedMealData());
     }
 }

@@ -125,7 +125,7 @@
 
         <Separator Margin="0 10 0 10"/>
         <StackPanel Orientation="Horizontal">
-            <Button Content="Add A Food"
+            <Button Content="Add Food"
                     Width="75" Height="25"
                     Margin="25 0 0 0"
                     ToolTip="Add a new food"

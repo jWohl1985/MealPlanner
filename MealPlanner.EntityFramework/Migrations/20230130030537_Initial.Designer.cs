@@ -9,11 +9,11 @@ using Take100.EntityFramework;
 
 #nullable disable
 
-namespace Take100.EntityFramework.Migrations
+namespace MealPlanner.EntityFramework.Migrations
 {
     [DbContext(typeof(DietContext))]
-    [Migration("20230126210440_WeightLogs2")]
-    partial class WeightLogs2
+    [Migration("20230130030537_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,8 +39,11 @@ namespace Take100.EntityFramework.Migrations
                     b.Property<int>("Goal")
                         .HasColumnType("int");
 
-                    b.Property<float>("HeightInInches")
-                        .HasColumnType("real");
+                    b.Property<int>("HeightFeetComponent")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HeightInchComponent")
+                        .HasColumnType("int");
 
                     b.Property<float>("HipCircumferenceInches")
                         .HasColumnType("real");
@@ -67,36 +70,6 @@ namespace Take100.EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Age = 37,
-                            Goal = 0,
-                            HeightInInches = 69f,
-                            HipCircumferenceInches = 0f,
-                            HoursExercisePerWeek = 3,
-                            IsMale = true,
-                            Name = "John",
-                            NeckCircumferenceInches = 13f,
-                            WaistCircumferenceInches = 32f,
-                            WeightInLbs = 145f
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Age = 54,
-                            Goal = 0,
-                            HeightInInches = 65f,
-                            HipCircumferenceInches = 38f,
-                            HoursExercisePerWeek = 1,
-                            IsMale = false,
-                            Name = "Mary",
-                            NeckCircumferenceInches = 15f,
-                            WaistCircumferenceInches = 38f,
-                            WeightInLbs = 170f
-                        });
                 });
 
             modelBuilder.Entity("Take100.Domain.Models.Food", b =>
@@ -109,9 +82,6 @@ namespace Take100.EntityFramework.Migrations
 
                     b.Property<float>("Calories")
                         .HasColumnType("real");
-
-                    b.Property<int>("FoodCategoryId")
-                        .HasColumnType("int");
 
                     b.Property<float>("GramsOfCarbs")
                         .HasColumnType("real");
@@ -142,7 +112,6 @@ namespace Take100.EntityFramework.Migrations
                         {
                             Id = 1,
                             Calories = 105f,
-                            FoodCategoryId = 3,
                             GramsOfCarbs = 27f,
                             GramsOfFat = 0.4f,
                             GramsOfProtein = 1.3f,
@@ -153,7 +122,6 @@ namespace Take100.EntityFramework.Migrations
                         {
                             Id = 2,
                             Calories = 120f,
-                            FoodCategoryId = 3,
                             GramsOfCarbs = 4f,
                             GramsOfFat = 1f,
                             GramsOfProtein = 24f,
@@ -165,52 +133,12 @@ namespace Take100.EntityFramework.Migrations
                         {
                             Id = 3,
                             Calories = 265f,
-                            FoodCategoryId = 1,
                             GramsOfCarbs = 57.5f,
                             GramsOfFat = 2.8f,
                             GramsOfProtein = 9.5f,
                             Name = "Frosted Miniwheats",
                             Notes = "with 120mL milk",
                             ServingSize = "60g"
-                        });
-                });
-
-            modelBuilder.Entity("Take100.Domain.Models.FoodCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FoodCategories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "breakfast"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "lunch"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "snack"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "dinner"
                         });
                 });
 
@@ -231,6 +159,9 @@ namespace Take100.EntityFramework.Migrations
                     b.Property<int>("FoodId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("HasBeenEaten")
+                        .HasColumnType("bit");
+
                     b.Property<float>("ServingsToEat")
                         .HasColumnType("real");
 
@@ -241,40 +172,6 @@ namespace Take100.EntityFramework.Migrations
                     b.HasIndex("FoodId");
 
                     b.ToTable("Meals");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DayNumber = 1,
-                            DietUserId = 1,
-                            FoodId = 1,
-                            ServingsToEat = 1f
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DayNumber = 1,
-                            DietUserId = 1,
-                            FoodId = 2,
-                            ServingsToEat = 2f
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DayNumber = 2,
-                            DietUserId = 2,
-                            FoodId = 3,
-                            ServingsToEat = 1f
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DayNumber = 2,
-                            DietUserId = 2,
-                            FoodId = 2,
-                            ServingsToEat = 0.5f
-                        });
                 });
 
             modelBuilder.Entity("Take100.Domain.Models.WeightLogEntry", b =>
@@ -299,36 +196,6 @@ namespace Take100.EntityFramework.Migrations
                     b.HasIndex("DietUserId");
 
                     b.ToTable("WeightLogs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Date = new DateTime(2022, 8, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DietUserId = 1,
-                            WeightInLbs = 160f
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Date = new DateTime(2022, 8, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DietUserId = 1,
-                            WeightInLbs = 158f
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DietUserId = 2,
-                            WeightInLbs = 180f
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DietUserId = 1,
-                            WeightInLbs = 179.4f
-                        });
                 });
 
             modelBuilder.Entity("Take100.Domain.Models.Meal", b =>

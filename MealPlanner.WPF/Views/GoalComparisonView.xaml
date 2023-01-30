@@ -24,13 +24,13 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="60"/>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"/>
@@ -85,6 +85,12 @@
                    Text="{Binding FatDifference}"
                    Foreground="{Binding FatDifferenceColor}"/>
 
+            <!-- Summary -->
+            <TextBlock Grid.Column="6" Grid.Row="2"
+                       HorizontalAlignment="Left"
+                       Margin="5 0 0 0"
+                       Text="{Binding Summary}"
+                       Foreground="{Binding CalorieDifferenceColor}"/>
         </Grid>
     </StackPanel>
 </UserControl>

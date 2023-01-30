@@ -38,7 +38,8 @@ public class GoalComparisonViewModel : ViewModelBase
     public string ProteinDifferenceColor => Math.Abs(ProteinDifference) > UserGoalCalculator.MACRONUTRIENT_WIGGLE_ROOM ? RedColor : GreenColor;
     public string CarbDifferenceColor => Math.Abs(CarbDifference) > UserGoalCalculator.MACRONUTRIENT_WIGGLE_ROOM ? RedColor : GreenColor;
     public string FatDifferenceColor => Math.Abs(FatDifference) > UserGoalCalculator.MACRONUTRIENT_WIGGLE_ROOM ? RedColor : GreenColor;
-
+    public string Summary => (CalorieDifferenceColor == GreenColor && ProteinDifferenceColor == GreenColor
+                              && CarbDifferenceColor == GreenColor && FatDifferenceColor == GreenColor) ? "Close enough!" : "Turn them green!";
 
     public GoalComparisonViewModel(MainViewModel mainViewModel, DayViewModel dayViewModel)
     {
@@ -123,6 +124,8 @@ public class GoalComparisonViewModel : ViewModelBase
         OnPropertyChanged(nameof(ProteinDifferenceColor));
         OnPropertyChanged(nameof(CarbDifferenceColor));
         OnPropertyChanged(nameof(FatDifferenceColor));
+
+        OnPropertyChanged(nameof(Summary));
 
         if (_mainViewModel.FoodDatabaseViewModel.OnlyShowFoodsThatMeetGoals)
         {
