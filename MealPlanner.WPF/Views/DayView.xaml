@@ -1,0 +1,157 @@
+﻿<UserControl x:Class="Take100.WPF.Views.DayView"
+             x:Name="this"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Take100.WPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="RadioButton" BasedOn="{StaticResource NavRadioButton}"/>
+    </UserControl.Resources>
+    <StackPanel>
+
+        <Label Content="Meal Plan"
+               HorizontalAlignment="Left"
+               FontSize="24"/>
+
+        <!-- Day Selector -->
+
+        <StackPanel Orientation="Horizontal">
+            <RadioButton GroupName="Day" 
+                     Command="{Binding SelectDayCommand}" 
+                     CommandParameter="0"
+                     Content="Sunday"
+                     IsChecked="{Binding IsSunday, Mode=OneTime}"/>
+            <RadioButton GroupName="Day" 
+                     Command="{Binding SelectDayCommand}" 
+                     CommandParameter="1"
+                     Content="Monday"
+                     IsChecked="{Binding IsMonday, Mode=OneTime}"/>
+            <RadioButton GroupName="Day" 
+                     Command="{Binding SelectDayCommand}" 
+                     CommandParameter="2"
+                     Content="Tuesday"
+                     IsChecked="{Binding IsTuesday, Mode=OneTime}"/>
+            <RadioButton GroupName="Day" 
+                     Command="{Binding SelectDayCommand}" 
+                     CommandParameter="3"
+                     Content="Wednesday"
+                     IsChecked="{Binding IsWednesday, Mode=OneTime}"/>
+            <RadioButton GroupName="Day" 
+                     Command="{Binding SelectDayCommand}" 
+                     CommandParameter="4"
+                     Content="Thursday"
+                     IsChecked="{Binding IsThursday, Mode=OneTime}"/>
+            <RadioButton GroupName="Day" 
+                     Command="{Binding SelectDayCommand}" 
+                     CommandParameter="5"
+                     Content="Friday"
+                     IsChecked="{Binding IsFriday, Mode=OneTime}"/>
+            <RadioButton GroupName="Day" 
+                     Command="{Binding SelectDayCommand}" 
+                     CommandParameter="6"
+                     Content="Saturday"
+                     IsChecked="{Binding IsSaturday, Mode=OneTime}"/>
+        </StackPanel>
+        
+
+        <!-- Planned Meals -->
+        <ListView ItemsSource="{Binding Meals}"
+                  MaxHeight="500"
+                  Width="600"
+                  HorizontalAlignment="Left"
+                  Margin="0 10 0 0"
+                  BorderThickness="0">
+           
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="Eaten"
+                                    Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button 
+                                    ToolTip="Mark as eaten"
+                                    Command="{Binding MarkAsEatenCommand}"
+                                    CommandParameter="{Binding .}">
+                                    <Image Source="/data/fork.png" Width="25" Height="25"/>
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Servings"
+                                    Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding ServingsText, UpdateSourceTrigger=LostFocus}"
+                                         Width="30"
+                                         HorizontalAlignment="Center"
+                                         AcceptsTab="false"
+                                         AcceptsReturn="false">
+                                </TextBox>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Food" 
+                                    Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Food.Name}"
+                                           TextDecorations="{Binding FoodNameTextDecoration}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Calories" 
+                                    DisplayMemberBinding="{Binding MealCalories}"
+                                    Width="60"/>
+                    <GridViewColumn Header="Protein" 
+                                    DisplayMemberBinding="{Binding MealProtein}"
+                                    Width="60"/>
+                    <GridViewColumn Header="Carbs" 
+                                    DisplayMemberBinding="{Binding MealCarbs}"
+                                    Width="60"/>
+                    <GridViewColumn Header="Fat" 
+                                    DisplayMemberBinding="{Binding MealFat}"
+                                    Width="60"/>
+                    <GridViewColumn Header="Info"
+                                    Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="/data/info.png" Width="25" Height="25"
+                                       ToolTip="{Binding MoreInfoTooltip}"
+                                       ToolTipService.InitialShowDelay="0"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Remove"
+                                    Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button 
+                                    ToolTip="Remove this meal from schedule"
+                                    Command="{Binding DeleteMealCommand}"
+                                    CommandParameter="{Binding .}">
+                                    <Image Source="/data/delete.png" Width="25" Height="25"/>
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel>
+            <Separator Margin="0 10 0 10" 
+                       Width="600"
+                       HorizontalAlignment="Left"/>
+            <local:GoalComparisonView DataContext="{Binding GoalComparisonViewModel}"/>
+            <Separator Margin="0 10 0 10" 
+                       Width="600"
+                       HorizontalAlignment="Left"/>
+        </StackPanel>
+    </StackPanel>
+
+</UserControl>

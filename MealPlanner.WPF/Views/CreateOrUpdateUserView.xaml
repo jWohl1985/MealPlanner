@@ -1,0 +1,245 @@
+﻿<UserControl x:Class="Take100.WPF.Views.CreateOrUpdateUserView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Take100.WPF.Views"
+             xmlns:nav="clr-namespace:Take100.WPF.State.Navigators"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="900">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibleIfFemaleConverter"/>
+    </UserControl.Resources>
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+        <Label Content="Add/Edit User"
+               FontSize="24"
+               HorizontalAlignment="Center"/>
+
+        <StackPanel HorizontalAlignment="Left"
+                    Orientation="Horizontal"
+                    Margin="0 10 0 0">
+
+            <GroupBox Header="Basic Info"
+                  HorizontalAlignment="Left"
+                  Width="400">
+                <StackPanel HorizontalAlignment="Left"
+                        Margin="5">
+
+                    <TextBlock TextWrapping="Wrap">
+                    Please enter the information below. This will be used to calculate
+                    your calorie requirements. All data is only stored locally on your
+                    computer, the app does not collect or transmit any of your information.
+                    </TextBlock>
+
+                    <!-- Name -->
+                    <Label Content="Name" Margin="0 10 0 0" />
+                    <TextBox Text="{Binding NameText, UpdateSourceTrigger=PropertyChanged}" 
+                         Width="200"
+                         HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding NameErrors}" Foreground="Red"/>
+
+                    <!-- Age -->
+                    <Label Content="Age" />
+                    <TextBox Text="{Binding AgeText, UpdateSourceTrigger=PropertyChanged}"
+                         Width="200"
+                         HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding AgeErrors}" Foreground="Red"/>
+
+                    <!-- Weight -->
+                    <Label Content="Current weight" />
+                    <TextBox Text="{Binding WeightText, UpdateSourceTrigger=PropertyChanged}"
+                         Width="200"
+                         HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding WeightErrors}" Foreground="Red"/>
+
+                    <!-- Sex -->
+                    <Label Content="Sex" />
+                    <ComboBox SelectedValue="{Binding SelectedSex}"
+                              SelectedValuePath="Content"
+                              Width="100"
+                              HorizontalAlignment="Left">
+                        <ComboBoxItem>Male</ComboBoxItem>
+                        <ComboBoxItem>Female</ComboBoxItem>
+                    </ComboBox>
+
+                    <!-- Height -->
+                    <Label Content="Height"
+                           Margin="0 15 0 0"/>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox SelectedValue="{Binding HeightFeetSelection}"
+                                  SelectedValuePath="Content"
+                                  Width="50"
+                                  Margin="0 0 10 0">
+                            <ComboBoxItem>4</ComboBoxItem>
+                            <ComboBoxItem>5</ComboBoxItem>
+                            <ComboBoxItem>6</ComboBoxItem>
+                            <ComboBoxItem>7</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Text="feet"/>
+                        <ComboBox SelectedValue="{Binding HeightInchesSelection}"
+                                  SelectedValuePath="Content"
+                                  Width="50"
+                                  Margin="10 0">
+                            <ComboBoxItem>0</ComboBoxItem>
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>2</ComboBoxItem>
+                            <ComboBoxItem>3</ComboBoxItem>
+                            <ComboBoxItem>4</ComboBoxItem>
+                            <ComboBoxItem>5</ComboBoxItem>
+                            <ComboBoxItem>6</ComboBoxItem>
+                            <ComboBoxItem>7</ComboBoxItem>
+                            <ComboBoxItem>8</ComboBoxItem>
+                            <ComboBoxItem>9</ComboBoxItem>
+                            <ComboBoxItem>10</ComboBoxItem>
+                            <ComboBoxItem>11</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Text="inches"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+            </GroupBox>
+
+            <StackPanel>
+
+                <GroupBox Header="Additional Info"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Margin="10 0 0 0"
+                  Width="400"
+                  Height="250">
+                    <StackPanel HorizontalAlignment="Left"
+                        Margin="5">
+                        <TextBlock TextWrapping="Wrap">
+                    Some additional information about your goals and activity. 
+                    Only pick "Gain weight" for Goal if you're already in 
+                    pretty good shape and are wanting to bulk up on a
+                    weightlifting program!<LineBreak/><LineBreak/>
+
+                    It is important that you actually do the amount of
+                    exercise you input, as this is used to determine
+                    how much you should eat! Remember to update your
+                    info if this changes.</TextBlock>
+
+
+                        <!-- Goal -->
+                        <Label Content="Goal" />
+                        <ComboBox SelectedValue="{Binding SelectedGoal}"
+                                  SelectedValuePath="Content"
+                              Width="125"
+                              HorizontalAlignment="Left">
+                            <ComboBoxItem>Lose weight</ComboBoxItem>
+                            <ComboBoxItem>Maintain weight</ComboBoxItem>
+                            <ComboBoxItem>Gain weight</ComboBoxItem>
+                        </ComboBox>
+
+                        <!-- Hours Exercise -->
+                        <Label Content="Hours exercise per week" />
+                        <ComboBox SelectedValue="{Binding SelectedHoursExercise}"
+                                  SelectedValuePath="Content"
+                              Width="125"
+                              HorizontalAlignment="Left">
+                            <ComboBoxItem>0</ComboBoxItem>
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>2</ComboBoxItem>
+                            <ComboBoxItem>3</ComboBoxItem>
+                            <ComboBoxItem>4</ComboBoxItem>
+                            <ComboBoxItem>5</ComboBoxItem>
+                            <ComboBoxItem>6</ComboBoxItem>
+                            <ComboBoxItem>7</ComboBoxItem>
+                            <ComboBoxItem>8</ComboBoxItem>
+                            <ComboBoxItem>9</ComboBoxItem>
+                            <ComboBoxItem>10+</ComboBoxItem>
+                        </ComboBox>
+
+                    </StackPanel>
+
+                </GroupBox>
+                <GroupBox Header="Measurements"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Width="400"
+                          Margin="10 0 0 0"
+                          Height="350">
+                    <StackPanel HorizontalAlignment="Left"
+                                Margin="5">
+
+
+                        <TextBlock TextWrapping="Wrap">
+                        Use a flexible measuring tape to measure the circumference
+                        of your neck and waist. Waist should be measured at the 
+                        belly button.<LineBreak/><LineBreak/>
+                        Females also need their hip circumference (at the widest 
+                        part of your hips). This is used to determine your body 
+                        fat percentage and calorie needs.
+                        </TextBlock>
+
+                        <!-- Neck -->
+                        <Label Content="Neck circumference"
+                               Margin="0 10 0 0"/>
+                        <TextBox Text="{Binding NeckText, UpdateSourceTrigger=PropertyChanged}"
+                         Width="200"
+                         HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding NeckErrors}" Foreground="Red"/>
+
+                        <!-- Waist -->
+                        <Label Content="Waist circumference" />
+                        <TextBox Text="{Binding WaistText, UpdateSourceTrigger=PropertyChanged}"
+                         Width="200"
+                         HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding WaistErrors}" Foreground="Red"/>
+
+                        <!-- Hips -->
+                        <Label Content="Hip circumference"
+                               Visibility="{Binding IsFemale, Converter={StaticResource VisibleIfFemaleConverter}}"/>
+                        <TextBox Text="{Binding HipText, UpdateSourceTrigger=PropertyChanged}"
+                                 Width="200"
+                                 HorizontalAlignment="Left"
+                                 Visibility="{Binding IsFemale, Converter={StaticResource VisibleIfFemaleConverter}}"/>
+                        <TextBlock Text="{Binding HipErrors}" 
+                                   Foreground="Red"
+                                   Visibility="{Binding IsFemale, Converter={StaticResource VisibleIfFemaleConverter}}"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    Width="810"
+                    Margin="0 25 0 0">
+
+            <!-- Save Button-->
+            <Button Command="{Binding CreateOrUpdateUserCommand}"
+                    CommandParameter="{Binding DietUser}"
+                    Content="Save"
+                    Style="{StaticResource AcceptButton}"
+                    Width="75" Height="25"
+                    Margin="325 0 0 0">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="4"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <!-- Cancel Button -->
+            <Button Command="{Binding CancelAddOrEditCommand}"
+                    Content="Cancel"
+                    Style="{StaticResource CancelButton}"
+                    Margin="15 0 0 0"
+                    Width="75" Height="25">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="4"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+        </StackPanel>
+    </StackPanel>
+</UserControl>
