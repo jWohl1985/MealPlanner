@@ -8,9 +8,9 @@ The program will add up what you've scheduled to eat and show you how it compare
 
 Technologies used:
 
---C#
---Entity Framework with SQL Server (for storing the user profiles, food information, and meal plans)
---WPF and XAML for the UI
+1. C#
+2. Entity Framework with SQL Server (for storing the user profiles, food information, and meal plans)
+3. WPF and XAML for the UI
 
 What I learned:
 
@@ -30,5 +30,5 @@ update in real time, and the ICommands cannot be executed until the errors are f
 
 Things I'm still working on:
 
---Finishing the X-unit testing project
---Weight log tracking. There is a model and views set up for this but it needs to be cleaned up and implemented
+1. Finishing the X-unit testing project
+2. Weight log tracking. There is a model and views set up for this but it needs to be cleaned up and implemented
