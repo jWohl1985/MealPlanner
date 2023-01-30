@@ -12,6 +12,8 @@ Technologies used:
 2. Entity Framework with SQL Server (for storing the user profiles, food information, and meal plans)
 3. WPF and XAML for the UI
 
+![Alt text](/screenshot.png?raw=true "Screenshot")
+
 What I learned:
 
 This is a complex project, I learned quite a bit. I'd say the main take away was really cementing the Model-View-ViewModel pattern in my mind. I know
