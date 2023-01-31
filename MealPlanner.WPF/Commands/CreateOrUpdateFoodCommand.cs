@@ -66,7 +66,8 @@ public class CreateOrUpdateFoodCommand : CommandBase
             || e.PropertyName == nameof(_createOrUpdateFoodViewModel.ProteinErrors)
             || e.PropertyName == nameof(_createOrUpdateFoodViewModel.CarbErrors)
             || e.PropertyName == nameof(_createOrUpdateFoodViewModel.FatErrors)
-            || e.PropertyName == nameof(_createOrUpdateFoodViewModel.ServingSizeErrors))
+            || e.PropertyName == nameof(_createOrUpdateFoodViewModel.ServingSizeErrors)
+            || e.PropertyName == nameof(_createOrUpdateFoodViewModel.NotesErrors))
         {
             OnCanExecuteChanged();
         }

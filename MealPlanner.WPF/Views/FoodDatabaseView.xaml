@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Take100.WPF.Views"
              xmlns:nav="clr-namespace:Take100.WPF.State.Navigators"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
              d:DesignHeight="650" d:DesignWidth="610">
 
@@ -24,6 +25,7 @@
 
         <ListView ItemsSource="{Binding FilteredFoods}"
                       Width="600"
+                      Height="600"
                       BorderThickness="0">
             <ListView.View>
                 <GridView AllowsColumnReorder="false">
@@ -166,10 +168,16 @@
             </Button>
 
             <Label Content="Search" Margin="25 0 5 0"/>
-            <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
                      Width="150" 
                      VerticalAlignment="Center"
-                     Margin="0 5 0 0"/>
+                     Margin="0 5 0 0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="GotFocus">
+                        <i:InvokeCommandAction Command="{Binding ClearSearchTextCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
         </StackPanel>
         <Separator Margin="0 10 0 10"/>
     </StackPanel>

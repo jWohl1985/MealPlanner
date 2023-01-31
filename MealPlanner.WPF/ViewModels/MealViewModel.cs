@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
+using MealPlanner.WPF.Helpers;
 using Take100.Domain.Models;
 using Take100.Domain.Services;
 using Take100.WPF.Commands;
@@ -25,7 +27,7 @@ public class MealViewModel : ViewModelBase
         get => _servingsText;
         set
         {
-            if (!ValidateInput(value))
+            if (InputValidation.GetFloatInputErrors(value, 0, 99) != String.Empty)
             {
                 _servingsText = Meal.ServingsToEat.ToString();
                 return;
@@ -80,6 +82,8 @@ public class MealViewModel : ViewModelBase
 
         if (food is not null)
             Food = food;
+
+        RefreshAllProperties();
     }
 
     private void UpdateMealServings(float newAmount)
@@ -99,14 +103,15 @@ public class MealViewModel : ViewModelBase
         _mainViewModel.DietDataService.MealRepository.UpdateAsync(Meal.Id, Meal);
     }
 
-    private bool ValidateInput(string input)
+    private void RefreshAllProperties()
     {
-        if (false == float.TryParse(input.Trim('.'), out float result))
-            return false;
-
-        if (result < 0 || result > 100)
-            return false;
-
-        return true;
+        OnPropertyChanged(nameof(ServingsText));
+        OnPropertyChanged(nameof(FoodNameTextDecoration));
+        OnPropertyChanged(nameof(ServingsToEat));
+        OnPropertyChanged(nameof(MealCalories));
+        OnPropertyChanged(nameof(MealProtein));
+        OnPropertyChanged(nameof(MealCarbs));
+        OnPropertyChanged(nameof(MealFat));
+        OnPropertyChanged(nameof(MoreInfoTooltip));
     }
 }

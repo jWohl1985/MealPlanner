@@ -7,7 +7,7 @@
         xmlns:nav="clr-namespace:Take100.WPF.State.Navigators"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MealPlanner v2.0.0 by Jeremy Wohl" Height="700" Width="1300">
+        Title="MealPlanner v2.0.0 by Jeremy Wohl" Height="875" Width="1300">
 
     <ScrollViewer>
         <Grid Margin="10">

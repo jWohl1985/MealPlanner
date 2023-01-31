@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using MealPlanner.WPF.Helpers;
 using Take100.Domain.Models;
 using Take100.WPF.Commands;
 using Take100.WPF.Helpers;
@@ -37,7 +38,7 @@ public class CreateOrUpdateUserViewModel : ViewModelBase
         set
         {
             _nameText = value;
-            NameErrors = UserValidator.GetNameInputErrors(value);
+            NameErrors = InputValidation.GetStringInputErrors(value, InputValidation.MAXIMUM_USERNAME_LENGTH, true);
             OnPropertyChanged(nameof(NameErrors));
 
             if (NameErrors == String.Empty)
@@ -52,7 +53,7 @@ public class CreateOrUpdateUserViewModel : ViewModelBase
         set
         {
             _ageText = value;
-            AgeErrors = UserValidator.GetIntInputErrors(value, UserValidator.MIN_AGE, UserValidator.MAX_AGE);
+            AgeErrors = InputValidation.GetIntInputErrors(value, InputValidation.MINIMUM_AGE, InputValidation.MAXIMUM_AGE);
             OnPropertyChanged(nameof(AgeErrors));
 
             if (AgeErrors == String.Empty)
@@ -72,7 +73,7 @@ public class CreateOrUpdateUserViewModel : ViewModelBase
 
             if (IsFemale)
             {
-                HipErrors = UserValidator.GetFloatInputErrors(value, UserValidator.MIN_HIPS, UserValidator.MAX_HIPS);
+                HipErrors = InputValidation.GetFloatInputErrors(value, InputValidation.MINIMUM_HIPS, InputValidation.MAXIMUM_HIPS);
                 OnPropertyChanged(nameof(HipErrors));
             }
             else
@@ -92,7 +93,7 @@ public class CreateOrUpdateUserViewModel : ViewModelBase
         set
         {
             _weightText = value;
-            WeightErrors = UserValidator.GetFloatInputErrors(value, UserValidator.MIN_WEIGHT, UserValidator.MAX_WEIGHT);
+            WeightErrors = InputValidation.GetFloatInputErrors(value, InputValidation.MINIMUM_WEIGHT, InputValidation.MAXIMUM_WEIGHT);
             OnPropertyChanged(nameof(WeightErrors));
 
             if (WeightErrors == String.Empty)
@@ -157,7 +158,7 @@ public class CreateOrUpdateUserViewModel : ViewModelBase
         set
         {
             _neckText = value;
-            NeckErrors = UserValidator.GetFloatInputErrors(value, UserValidator.MIN_NECK, UserValidator.MAX_NECK);
+            NeckErrors = InputValidation.GetFloatInputErrors(value, InputValidation.MINIMUM_NECK, InputValidation.MAXIMUM_NECK);
             OnPropertyChanged(nameof(NeckErrors));
 
             if (NeckErrors == String.Empty)
@@ -172,7 +173,7 @@ public class CreateOrUpdateUserViewModel : ViewModelBase
         set
         {
             _waistText = value;
-            WaistErrors = UserValidator.GetFloatInputErrors(value, UserValidator.MIN_WAIST, UserValidator.MAX_WAIST);
+            WaistErrors = InputValidation.GetFloatInputErrors(value, InputValidation.MINIMUM_WAIST, InputValidation.MAXIMUM_WAIST);
             OnPropertyChanged(nameof(WaistErrors));
 
             if (WaistErrors == String.Empty)
@@ -187,7 +188,7 @@ public class CreateOrUpdateUserViewModel : ViewModelBase
         set
         {
             _hipText = value;
-            HipErrors = UserValidator.GetFloatInputErrors(value, UserValidator.MIN_HIPS, UserValidator.MAX_HIPS);
+            HipErrors = InputValidation.GetFloatInputErrors(value, InputValidation.MINIMUM_HIPS, InputValidation.MAXIMUM_HIPS);
             if (HipErrors == String.Empty)
                 _dietUser.HipCircumferenceInches = float.Parse(value);
             if (!IsFemale)

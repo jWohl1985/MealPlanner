@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
+using MealPlanner.WPF.Commands;
 using Take100.Domain.Models;
 using Take100.Domain.Services;
 using Take100.EntityFramework;
@@ -27,6 +28,7 @@ public class FoodDatabaseViewModel : ViewModelBase
     public ICommand DeleteFoodCommand { get; set; }
     public ICommand AddFoodToMealPlanCommand { get; set; }
     public ICommand SortByCommand { get; set; }
+    public ICommand ClearSearchTextCommand { get; set; }
     public ICommand ExportFoodDatabaseCommand { get; set; }
     public ICommand ImportFoodDatabaseCommand { get; set; }
     public INavigator Navigator => _mainViewModel.Navigator;
@@ -95,6 +97,7 @@ public class FoodDatabaseViewModel : ViewModelBase
         DeleteFoodCommand = new DeleteFoodCommand(_mainViewModel);
         AddFoodToMealPlanCommand = new AddFoodToMealPlanCommand(_mainViewModel);
         SortByCommand = new SortByCommand(this);
+        ClearSearchTextCommand = new ClearSearchTextCommand(this);
         ExportFoodDatabaseCommand = new ExportFoodDatabaseCommand(_mainViewModel.DietDataService);
         ImportFoodDatabaseCommand = new ImportFoodDatabaseCommand(_mainViewModel);
     }

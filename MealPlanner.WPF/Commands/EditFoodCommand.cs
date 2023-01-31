@@ -12,7 +12,7 @@ namespace Take100.WPF.Commands;
 
 public class EditFoodCommand : CommandBase
 {
-    private MainViewModel _mainViewModel;
+    private readonly MainViewModel _mainViewModel;
 
     public EditFoodCommand(MainViewModel mainViewModel)
     {
