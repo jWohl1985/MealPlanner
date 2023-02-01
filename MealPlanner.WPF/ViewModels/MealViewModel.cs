@@ -27,17 +27,12 @@ public class MealViewModel : ViewModelBase
         get => _servingsText;
         set
         {
-            if (InputValidation.GetFloatInputErrors(value, 0, 99) != String.Empty)
-            {
-                _servingsText = Meal.ServingsToEat.ToString();
-                return;
-            }
-
-            if (value.Last<char>() == '.')
-                value.Trim('.');
-
             _servingsText = value;
-            UpdateMealServings(float.Parse(value));
+
+            if (InputValidation.GetFloatInputErrors(value, 0, 99) == String.Empty)
+            {
+                UpdateMealServings(float.Parse(value));
+            }
         }
     }
 
@@ -61,6 +56,7 @@ public class MealViewModel : ViewModelBase
     private string ServingSizeInfo => $"Serving size: {Food.ServingSize}";
     private string NotesInfo => string.IsNullOrEmpty(Food.Notes) ? "" : $"\nNotes: {Food.Notes}";
     public string MoreInfoTooltip => ServingSizeInfo + NotesInfo;
+    public string ButtonPicture => HasBeenEaten ? "/data/checkmark.png" : "/data/fork.png";
     public ICommand DeleteMealCommand => DayViewModel.DeleteMealCommand;
     public ICommand MarkAsEatenCommand => DayViewModel.MarkAsEatenCommand;
 
@@ -100,6 +96,7 @@ public class MealViewModel : ViewModelBase
     private void UpdateMealHasBeenEaten()
     {
         OnPropertyChanged(nameof(FoodNameTextDecoration));
+        OnPropertyChanged(nameof(ButtonPicture));
         _mainViewModel.DietDataService.MealRepository.UpdateAsync(Meal.Id, Meal);
     }
 

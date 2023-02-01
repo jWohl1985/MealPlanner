@@ -76,7 +76,7 @@
                                     ToolTip="Mark as eaten"
                                     Command="{Binding MarkAsEatenCommand}"
                                     CommandParameter="{Binding .}">
-                                    <Image Source="/data/fork.png" Width="25" Height="25"/>
+                                    <Image Source="{Binding ButtonPicture}" Width="25" Height="25"/>
                                 </Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -85,7 +85,7 @@
                                     Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Text="{Binding ServingsText, UpdateSourceTrigger=LostFocus}"
+                                <TextBox Text="{Binding ServingsText, UpdateSourceTrigger=PropertyChanged}"
                                          Width="30"
                                          HorizontalAlignment="Center"
                                          AcceptsTab="false"

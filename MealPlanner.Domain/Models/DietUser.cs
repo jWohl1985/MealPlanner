@@ -20,6 +20,4 @@ public class DietUser : DomainObject
     public float NeckCircumferenceInches { get; set; }
     public float WaistCircumferenceInches { get; set; }
     public float HipCircumferenceInches { get; set; } // only needed for females
-
-
 }

@@ -10,6 +10,7 @@
 
 	<ItemGroup>
 	  <None Remove="data\add.png" />
+	  <None Remove="data\checkmark.png" />
 	  <None Remove="data\delete.png" />
 	  <None Remove="data\edit.png" />
 	  <None Remove="data\fork.png" />
@@ -28,6 +29,9 @@
 
 	<ItemGroup>
 	  <Content Include="data\add.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="data\checkmark.png">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
 	  <Content Include="data\delete.png">

@@ -50,7 +50,7 @@
                     <TextBlock Text="{Binding AgeErrors}" Foreground="Red"/>
 
                     <!-- Weight -->
-                    <Label Content="Current weight" />
+                    <Label Content="Current weight in lbs" />
                     <TextBox Text="{Binding WeightText, UpdateSourceTrigger=PropertyChanged}"
                          Width="200"
                          HorizontalAlignment="Left"/>
