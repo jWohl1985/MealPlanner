@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Take100.WPF.Views
+namespace MealPlanner.WPF.Views
 {
     /// <summary>
     /// Interaction logic for MainView.xaml

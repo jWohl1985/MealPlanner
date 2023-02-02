@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Take100.WPF.Commands;
-using Take100.WPF.ViewModels;
+using MealPlanner.WPF.Commands;
+using MealPlanner.WPF.ViewModels;
 
 namespace MealPlanner.WPF.Commands;
 

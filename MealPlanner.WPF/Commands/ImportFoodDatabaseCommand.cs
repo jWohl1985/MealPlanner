@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Win32;
-using Take100.Domain.Models;
-using Take100.WPF.ViewModels;
+using MealPlanner.Domain.Models;
+using MealPlanner.WPF.ViewModels;
 
-namespace Take100.WPF.Commands;
+namespace MealPlanner.WPF.Commands;
 
 public class ImportFoodDatabaseCommand : CommandBase
 {

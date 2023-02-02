@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using MealPlanner.WPF.Helpers;
-using Take100.Domain.Models;
-using Take100.Domain.Services;
-using Take100.WPF.Commands;
+using MealPlanner.Domain.Models;
+using MealPlanner.Domain.Services;
+using MealPlanner.WPF.Commands;
 
-namespace Take100.WPF.ViewModels;
+namespace MealPlanner.WPF.ViewModels;
 
 public class MealViewModel : ViewModelBase
 {

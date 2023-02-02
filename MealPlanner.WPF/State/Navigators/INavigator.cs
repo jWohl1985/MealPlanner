@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Take100.WPF.ViewModels;
+using MealPlanner.WPF.ViewModels;
 
-namespace Take100.WPF.State.Navigators;
+namespace MealPlanner.WPF.State.Navigators;
 
 public enum ViewType
 {

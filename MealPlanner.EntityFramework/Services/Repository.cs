@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Take100.Domain.Models;
-using Take100.Domain.Services;
+using MealPlanner.Domain.Models;
+using MealPlanner.Domain.Services;
 
-namespace Take100.EntityFramework.Services;
+namespace MealPlanner.EntityFramework.Services;
 
 public class Repository<T> : IRepository<T> where T : DomainObject
 {
@@ -21,66 +21,59 @@ public class Repository<T> : IRepository<T> where T : DomainObject
 
     public IEnumerable<T> GetAll()
     {
-        using (DietContext context = _contextFactory.CreateDbContext())
-        {
-            return context.Set<T>().ToList();
-        }
+        using DietContext context = _contextFactory.CreateDbContext();
+        return context.Set<T>().ToList();
     }
 
     public async Task<T> CreateAsync(T entity)
     {
-        using (DietContext context = _contextFactory.CreateDbContext())
-        {
-            EntityEntry<T> createdResult = await context.Set<T>().AddAsync(entity);
-            await context.SaveChangesAsync();
+        using DietContext context = _contextFactory.CreateDbContext();
 
-            return createdResult.Entity;
-        }
+        EntityEntry<T> createdResult = await context.Set<T>().AddAsync(entity);
+        await context.SaveChangesAsync();
+
+        return createdResult.Entity;
     }
 
     public async Task<bool> DeleteAsync(int id)
     {
-        using (DietContext context = _contextFactory.CreateDbContext())
-        {
-            T? entity = await context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
+        using DietContext context = _contextFactory.CreateDbContext();
 
-            if (entity is null)
-                return false;
+        T? entity = await context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
 
-            context.Set<T>().Remove(entity);
-            await context.SaveChangesAsync();
+        if (entity is null)
+            return false;
 
-            return true;
-        }
+        context.Set<T>().Remove(entity);
+        await context.SaveChangesAsync();
+
+        return true;
     }
 
     public async Task<IEnumerable<T>> GetAllAsync()
     {
-        using (DietContext context = _contextFactory.CreateDbContext())
-        {
-            IEnumerable<T> entities = await context.Set<T>().ToListAsync();
-            return entities;
-        }
+        using DietContext context = _contextFactory.CreateDbContext();
+
+        IEnumerable<T> entities = await context.Set<T>().ToListAsync();
+        return entities;
     }
 
     public async Task<T?> GetByIdAsync(int id)
     {
-        using (DietContext context = _contextFactory.CreateDbContext())
-        {
-            T? entity = await context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
-            return entity;
-        }
+        using DietContext context = _contextFactory.CreateDbContext();
+
+        T? entity = await context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
+        return entity;
     }
 
     public async Task<T> UpdateAsync(int id, T entity)
     {
-        using (DietContext context = _contextFactory.CreateDbContext())
-        {
-            entity.Id = id;
-            context.Set<T>().Update(entity);
-            await context.SaveChangesAsync();
+        using DietContext context = _contextFactory.CreateDbContext();
 
-            return entity;
-        }
+        entity.Id = id;
+        context.Set<T>().Update(entity);
+        await context.SaveChangesAsync();
+
+        return entity;
     }
 }

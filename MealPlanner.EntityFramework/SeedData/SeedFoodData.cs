@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Take100.Domain.Models;
+using MealPlanner.Domain.Models;
 
-namespace Take100.EntityFramework.SeedData;
+namespace MealPlanner.EntityFramework.SeedData;
 
 internal class SeedFoodData : IEntityTypeConfiguration<Food>
 {

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Take100.Domain.Models;
+using MealPlanner.Domain.Models;
 
-namespace Take100.WPF.Helpers;
+namespace MealPlanner.WPF.Helpers;
 
 public class UserGoalCalculator
 {
-    public static readonly int CALORIE_WIGGLE_ROOM = 50; // how many calories the user is allowed to be over/under their goal
-    public static readonly int MACRONUTRIENT_WIGGLE_ROOM = 7; // how many grams the user is allowed to be over/under on each macronutrient
+    public static readonly int CALORIE_WIGGLE_ROOM = 50; // how many calories the user is allowed to be over/under
+    public static readonly int MACRONUTRIENT_WIGGLE_ROOM = 7; // how many grams of protein/carbs/fat the user is allowed to be over/under
     public static readonly int PROTEIN_CALORIES_PER_GRAM = 4;
     public static readonly int CARB_CALORIES_PER_GRAM = 4;
     public static readonly int FAT_CALORIES_PER_GRAM = 9;
@@ -35,7 +35,7 @@ public class UserGoalCalculator
         _dietUser = dietUser;
 
         BodyFatPercentage = CalculateBodyFatPercentage();
-        UserIsObese = (_dietUser.IsMale && BodyFatPercentage > 25) || (!_dietUser.IsMale && BodyFatPercentage > 35);
+        UserIsObese = (_dietUser.IsMale && BodyFatPercentage > .25f) || (!_dietUser.IsMale && BodyFatPercentage > .35f);
         LeanBodyMassInPounds = CalculateLeanBodyMassInPounds();
         BaseMetabolicRate = CalculateBaseMetabolicRate();
         TotalDailyEnergyExpenditure = CalculateTotalDailyEnergyExpenditure();
@@ -76,8 +76,8 @@ public class UserGoalCalculator
     private float CalculateLeanBodyMassInPounds()
     {
         // Lean body mass is weight without fat included
-        float nonFatPercentage = 1 - BodyFatPercentage;
-        return _dietUser.WeightInLbs * nonFatPercentage;
+        float leanPercentage = 1 - BodyFatPercentage;
+        return _dietUser.WeightInLbs * leanPercentage;
     }
 
     private float CalculateBaseMetabolicRate()
@@ -89,6 +89,7 @@ public class UserGoalCalculator
 
     private float CalculateTotalDailyEnergyExpenditure()
     {
+        // Activity multiplier based on hours of exercise as recommended by Mike Matthews (book: Bigger, Leaner, Stronger)
         float activityMultiplier = 1.15f + (.05f * _dietUser.HoursExercisePerWeek);
 
         return BaseMetabolicRate * activityMultiplier;

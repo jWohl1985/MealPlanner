@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Take100.Domain.Services;
-using Take100.WPF.Commands;
-using Take100.WPF.ViewModels;
+using MealPlanner.Domain.Services;
+using MealPlanner.WPF.Commands;
+using MealPlanner.WPF.ViewModels;
 
-namespace Take100.WPF.State.Navigators;
+namespace MealPlanner.WPF.State.Navigators;
 
 public class Navigator : ViewModelBase, INavigator
 {

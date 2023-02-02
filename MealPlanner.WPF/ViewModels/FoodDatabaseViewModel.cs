@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
 using MealPlanner.WPF.Commands;
-using Take100.Domain.Models;
-using Take100.Domain.Services;
-using Take100.EntityFramework;
-using Take100.EntityFramework.Services;
-using Take100.WPF.Commands;
-using Take100.WPF.Helpers;
-using Take100.WPF.State.Navigators;
+using MealPlanner.Domain.Models;
+using MealPlanner.Domain.Services;
+using MealPlanner.EntityFramework;
+using MealPlanner.EntityFramework.Services;
+using MealPlanner.WPF.Helpers;
+using MealPlanner.WPF.State.Navigators;
 
-namespace Take100.WPF.ViewModels;
+namespace MealPlanner.WPF.ViewModels;
 
 public class FoodDatabaseViewModel : ViewModelBase
 {

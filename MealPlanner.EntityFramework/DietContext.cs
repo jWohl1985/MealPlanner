@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Take100.Domain.Models;
-using Take100.EntityFramework.SeedData;
+using MealPlanner.Domain.Models;
+using MealPlanner.EntityFramework.SeedData;
 
-namespace Take100.EntityFramework;
+namespace MealPlanner.EntityFramework;
 
 public class DietContext : DbContext
 {

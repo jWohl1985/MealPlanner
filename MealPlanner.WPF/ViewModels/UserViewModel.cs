@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Take100.Domain.Models;
+using MealPlanner.Domain.Models;
 
-namespace Take100.WPF.ViewModels;
+namespace MealPlanner.WPF.ViewModels;
 
 public class UserViewModel : ViewModelBase
 {

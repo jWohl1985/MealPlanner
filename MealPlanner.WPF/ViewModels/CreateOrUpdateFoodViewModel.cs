@@ -5,12 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MealPlanner.WPF.Helpers;
-using Take100.Domain.Models;
-using Take100.WPF.Commands;
-using Take100.WPF.Helpers;
-using Take100.WPF.State.Navigators;
+using MealPlanner.Domain.Models;
+using MealPlanner.WPF.Commands;
+using MealPlanner.WPF.State.Navigators;
 
-namespace Take100.WPF.ViewModels;
+namespace MealPlanner.WPF.ViewModels;
 
 public class CreateOrUpdateFoodViewModel : ViewModelBase
 {

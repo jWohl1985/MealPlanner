@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Take100.Domain.Services;
+namespace MealPlanner.Domain.Services;
 
 public interface IRepository<T> where T : class
 {

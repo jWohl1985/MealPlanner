@@ -1,8 +1,8 @@
-using Take100.Domain.Models;
-using Take100.EntityFramework;
+using MealPlanner.Domain.Models;
+using MealPlanner.EntityFramework;
 using Xunit.Sdk;
 
-namespace Take100.Tests;
+namespace MealPlanner.Tests.EntityFrameworkTests;
 
 public class DietContextTests
 {
@@ -33,5 +33,6 @@ public class DietContextTests
         Assert.NotNull(sut.Users);
         Assert.NotNull(sut.Foods);
         Assert.NotNull(sut.Meals);
+        Assert.NotNull(sut.WeightLogs);
     }
 }

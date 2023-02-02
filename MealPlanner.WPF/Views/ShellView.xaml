@@ -1,10 +1,10 @@
-﻿<Window x:Class="Take100.WPF.Views.ShellView"
+﻿<Window x:Class="MealPlanner.WPF.Views.ShellView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Take100.WPF.Views"
-        xmlns:nav="clr-namespace:Take100.WPF.State.Navigators"
+        xmlns:local="clr-namespace:MealPlanner.WPF.Views"
+        xmlns:nav="clr-namespace:MealPlanner.WPF.State.Navigators"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="MealPlanner v2.0.0 by Jeremy Wohl" Height="875" Width="1300">

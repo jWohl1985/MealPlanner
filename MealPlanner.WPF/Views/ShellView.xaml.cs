@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Take100.WPF.Views
+namespace MealPlanner.WPF.Views
 {
     /// <summary>
     /// Interaction logic for ShellView.xaml

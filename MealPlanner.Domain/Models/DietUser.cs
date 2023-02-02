@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Take100.Domain.Models;
+namespace MealPlanner.Domain.Models;
 
 public class DietUser : DomainObject
 {

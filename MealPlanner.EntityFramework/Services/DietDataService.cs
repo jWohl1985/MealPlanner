@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Take100.Domain.Models;
-using Take100.Domain.Services;
+using MealPlanner.Domain.Models;
+using MealPlanner.Domain.Services;
 
-namespace Take100.EntityFramework.Services;
+namespace MealPlanner.EntityFramework.Services;
 
 public class DietDataService : IDietDataService
 {

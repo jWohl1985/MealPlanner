@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Take100.Domain.Models;
+using MealPlanner.Domain.Models;
 
-namespace Take100.WPF.ViewModels;
+namespace MealPlanner.WPF.ViewModels;
 
 public class WeightLogEntryViewModel : ViewModelBase
 {

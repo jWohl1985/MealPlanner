@@ -5,10 +5,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Take100.Domain.Models;
-using Take100.WPF.Helpers;
+using MealPlanner.Domain.Models;
+using MealPlanner.WPF.Helpers;
 
-namespace Take100.WPF.ViewModels;
+namespace MealPlanner.WPF.ViewModels;
 
 public class GoalComparisonViewModel : ViewModelBase
 {

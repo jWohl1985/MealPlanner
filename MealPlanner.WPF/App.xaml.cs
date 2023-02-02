@@ -7,14 +7,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
-using Take100.Domain.Models;
-using Take100.Domain.Services;
-using Take100.EntityFramework;
-using Take100.EntityFramework.Services;
-using Take100.WPF.ViewModels;
-using Take100.WPF.Views;
+using MealPlanner.Domain.Models;
+using MealPlanner.Domain.Services;
+using MealPlanner.EntityFramework;
+using MealPlanner.EntityFramework.Services;
+using MealPlanner.WPF.ViewModels;
+using MealPlanner.WPF.Views;
 
-namespace Take100.WPF
+namespace MealPlanner.WPF
 {
     /// <summary>
     /// Interaction logic for App.xaml

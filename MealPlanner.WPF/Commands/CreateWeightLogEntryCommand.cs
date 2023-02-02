@@ -4,10 +4,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Take100.Domain.Models;
-using Take100.WPF.ViewModels;
+using MealPlanner.Domain.Models;
+using MealPlanner.WPF.ViewModels;
 
-namespace Take100.WPF.Commands;
+namespace MealPlanner.WPF.Commands;
 
 public class CreateWeightLogEntryCommand : CommandBase
 {
