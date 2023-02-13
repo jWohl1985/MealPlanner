@@ -73,7 +73,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button 
-                                    ToolTip="Mark as eaten"
+                                    ToolTip="{Binding ButtonTooltip}"
                                     Command="{Binding MarkAsEatenCommand}"
                                     CommandParameter="{Binding .}">
                                     <Image Source="{Binding ButtonPicture}" Width="25" Height="25"/>

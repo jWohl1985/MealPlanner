@@ -57,6 +57,7 @@ public class MealViewModel : ViewModelBase
     private string NotesInfo => string.IsNullOrEmpty(Food.Notes) ? "" : $"\nNotes: {Food.Notes}";
     public string MoreInfoTooltip => ServingSizeInfo + NotesInfo;
     public string ButtonPicture => HasBeenEaten ? "/data/checkmark.png" : "/data/fork.png";
+    public string ButtonTooltip => HasBeenEaten ? "Unmark as eaten" : "Mark as eaten";
     public ICommand DeleteMealCommand => DayViewModel.DeleteMealCommand;
     public ICommand MarkAsEatenCommand => DayViewModel.MarkAsEatenCommand;
 
@@ -97,6 +98,7 @@ public class MealViewModel : ViewModelBase
     {
         OnPropertyChanged(nameof(FoodNameTextDecoration));
         OnPropertyChanged(nameof(ButtonPicture));
+        OnPropertyChanged(nameof(ButtonTooltip));
         _mainViewModel.DietDataService.MealRepository.UpdateAsync(Meal.Id, Meal);
     }
 
@@ -110,5 +112,7 @@ public class MealViewModel : ViewModelBase
         OnPropertyChanged(nameof(MealCarbs));
         OnPropertyChanged(nameof(MealFat));
         OnPropertyChanged(nameof(MoreInfoTooltip));
+        OnPropertyChanged(nameof(ButtonPicture));
+        OnPropertyChanged(nameof(ButtonTooltip));
     }
 }
